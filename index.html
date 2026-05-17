@@ -176,48 +176,62 @@ linear-gradient(135deg,#ffb6d9,#ffd1e6,#ffc2dc,#ffe4f2);
     }
    .sakura{
   position:absolute;
-  font-size:24px;
-  opacity:0.7;
-  animation:fall 10s linear infinite;
+  font-size:28px;
+  animation:fall linear infinite;
+  opacity:0.8;
+  filter:drop-shadow(0 0 8px #ff9ac9);
 }
 
 .s1{
   left:5%;
   top:-10%;
-  animation-delay:0s;
+  animation-duration:10s;
 }
 
 .s2{
   left:25%;
   top:-20%;
-  animation-delay:2s;
+  animation-duration:13s;
 }
 
 .s3{
   left:50%;
   top:-15%;
-  animation-delay:4s;
+  animation-duration:9s;
 }
 
 .s4{
   left:75%;
   top:-25%;
-  animation-delay:1s;
+  animation-duration:12s;
 }
 
 .s5{
   left:90%;
   top:-18%;
-  animation-delay:3s;
+  animation-duration:11s;
 }
 
 @keyframes fall{
   0%{
-    transform:translateY(0) rotate(0deg);
+    transform:
+    translateY(-100px)
+    rotate(0deg)
+    translateX(0px);
+  }
+
+  50%{
+    transform:
+    translateY(50vh)
+    rotate(180deg)
+    translateX(30px);
   }
 
   100%{
-    transform:translateY(120vh) rotate(360deg);
+    transform:
+    translateY(120vh)
+    rotate(360deg)
+    translateX(-30px);
   }
 }
   </style>
