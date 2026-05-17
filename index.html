@@ -175,6 +175,52 @@ linear-gradient(135deg,#ffb6d9,#ffd1e6,#ffc2dc,#ffe4f2);
         opacity:0;
       }
     }
+   .sakura{
+  position:absolute;
+  font-size:24px;
+  opacity:0.7;
+  animation:fall 10s linear infinite;
+}
+
+.s1{
+  left:5%;
+  top:-10%;
+  animation-delay:0s;
+}
+
+.s2{
+  left:25%;
+  top:-20%;
+  animation-delay:2s;
+}
+
+.s3{
+  left:50%;
+  top:-15%;
+  animation-delay:4s;
+}
+
+.s4{
+  left:75%;
+  top:-25%;
+  animation-delay:1s;
+}
+
+.s5{
+  left:90%;
+  top:-18%;
+  animation-delay:3s;
+}
+
+@keyframes fall{
+  0%{
+    transform:translateY(0) rotate(0deg);
+  }
+
+  100%{
+    transform:translateY(120vh) rotate(360deg);
+  }
+}
   </style>
 </head>
 
