@@ -174,47 +174,45 @@ linear-gradient(135deg,#ffb6d9,#ffd1e6,#ffc2dc,#ffe4f2);
         opacity:0;
       }
     }
-   .petal{
+   .sakura{
   position:absolute;
-  width:28px;
+  font-size:28px;
+  animation:fall linear infinite;
   opacity:0.8;
-  pointer-events:none;
-  z-index:1;
-  animation:petalfall linear infinite;
+  filter:drop-shadow(0 0 8px #ff9ac9);
 }
 
-.p1{
+.s1{
   left:5%;
   top:-10%;
   animation-duration:10s;
 }
 
-.p2{
+.s2{
   left:25%;
   top:-20%;
   animation-duration:13s;
 }
 
-.p3{
+.s3{
   left:50%;
   top:-15%;
   animation-duration:9s;
 }
 
-.p4{
+.s4{
   left:75%;
   top:-25%;
   animation-duration:12s;
 }
 
-.p5{
+.s5{
   left:90%;
   top:-18%;
   animation-duration:11s;
 }
 
-@keyframes petalfall{
-
+@keyframes fall{
   0%{
     transform:
     translateY(-100px)
@@ -238,18 +236,14 @@ linear-gradient(135deg,#ffb6d9,#ffd1e6,#ffc2dc,#ffe4f2);
 }
   </style>
 </head>
-<div class="petal p1">🌸</div>
-<div class="petal p2">🌸</div>
-<div class="petal p3">🌸</div>
-<div class="petal p4">🌸</div>
-<div class="petal p5">🌸</div>
+
 <body>
-<img src="https://i.imgur.com/Zf9sYFQ.png" class="petal p1">
-<img src="https://i.imgur.com/Zf9sYFQ.png" class="petal p2">
-<img src="https://i.imgur.com/Zf9sYFQ.png" class="petal p3">
-<img src="https://i.imgur.com/Zf9sYFQ.png" class="petal p4">
-<img src="https://i.imgur.com/Zf9sYFQ.png" class="petal p5">
-   style="left:10%; bottom:0;">✦</div>
+   <div class="sakura s1">🌸</div>
+   <div class="sakura s2">🌸</div>
+   <div class="sakura s3">🌸</div>
+   <div class="sakura s4">🌸</div>
+   <div class="sakura s5">🌸</div>
+   <div class="sparkle" style="left:10%; bottom:0;">✦</div>
   <div class="sparkle" style="left:30%; bottom:-20px; animation-delay:1s;">♡</div>
   <div class="sparkle" style="left:50%; bottom:-10px; animation-delay:2s;">✦</div>
   <div class="sparkle" style="left:70%; bottom:-30px; animation-delay:3s;">♡</div>
