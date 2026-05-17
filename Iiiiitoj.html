@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ITOJ ILYA ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow-y:auto;
+      background:
+      linear-gradient(135deg,#ff9cf7,#d9a7ff,#fbc2eb,#fad0ff);
+      position:relative;
+    }
+
+    body::before{
+      content:"";
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:
+      background:
+    linear-gradient(135deg,#ffb6d9,#ffd1e6,#ffc2dc,#ffe4f2); transparent 40%),
+      radial-gradient(circle at bottom right, rgba(255,255,255,0.4), transparent 40%);
+      animation:bgMove 8s infinite alternate ease-in-out;
+    }
+
+    @keyframes bgMove{
+      from{
+        transform:scale(1);
+      }
+      to{
+        transform:scale(1.08);
+      }
+    }
+
+    .container{
+      position:relative;
+      z-index:2;
+      width:90%;
+      max-width:420px;
+      padding:30px 22px;
+      border-radius:30px;
+      backdrop-filter:blur(12px);
+      background:rgba(255,255,255,0.15);
+      box-shadow:
+      0 0 25px rgba(255,255,255,0.3),
+      0 0 60px rgba(255,255,255,0.1);
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.25);
+    }
+
+    .profile-img{
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid rgba(255,255,255,0.7);
+      box-shadow:0 0 25px rgba(255,255,255,0.6);
+      margin-bottom:18px;
+      animation:float 3s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-8px);
+      }
+    }
+
+    h1{
+      color:#ffffff;
+      font-size:28px;
+      font-weight:600;
+      text-shadow:0 0 10px rgba(255,255,255,0.5);
+      margin-bottom:8px;
+    }
+
+    .jp{
+      color:#fff;
+      font-size:18px;
+      margin-bottom:28px;
+      letter-spacing:2px;
+      text-shadow:0 0 10px rgba(255,255,255,0.5);
+    }
+
+    .links{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .link-card{
+      text-decoration:none;
+      color:#5a4300;
+      padding:18px 20px;
+      border-radius:22px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      background:rgba(255,255,255,0.35);
+      border:1px solid rgba(255,255,255,0.25);
+      backdrop-filter:blur(10px);
+      transition:0.25s ease;
+      box-shadow:0 0 25px rgba(255,182,217,0.8);
+    }
+
+    .link-card:hover{
+      transform:scale(1.04);
+      background:rgba(255,255,255,0.28);
+    }
+
+    .icon{
+      width:54px;
+      height:54px;
+      border-radius:16px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:26px;
+      background:rgba(255,255,255,0.22);
+      box-shadow:0 0 15px rgba(255,255,255,0.2);
+    }
+
+    .link-text{
+      text-align:left;
+    }
+
+    .link-text h2{
+      font-size:18px;
+      font-weight:600;
+    }
+
+    .link-text p{
+      font-size:13px;
+      opacity:0.8;
+    }
+
+    .sparkle{
+      position:absolute;
+      color:#5a4300;
+      opacity:0.7;
+      animation:spark 4s linear infinite;
+      font-size:14px;
+    }
+
+    @keyframes spark{
+      0%{
+        transform:translateY(0px) rotate(0deg);
+        opacity:0;
+      }
+      30%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-120px) rotate(180deg);
+        opacity:0;
+      }
+    }
+      .sakura{
+  position:absolute;
+  font-size:28px;
+  animation:fall linear infinite;
+  opacity:0.8;
+  filter:drop-shadow(0 0 8px #ff9ac9);
+}
+
+.s1{
+  left:5%;
+  top:-10%;
+  animation-duration:10s;
+}
+
+.s2{
+  left:25%;
+  top:-20%;
+  animation-duration:13s;
+}
+
+.s3{
+  left:50%;
+  top:-15%;
+  animation-duration:9s;
+}
+
+.s4{
+  left:75%;
+  top:-25%;
+  animation-duration:12s;
+}
+
+.s5{
+  left:90%;
+  top:-18%;
+  animation-duration:11s;
+}
+
+@keyframes fall{
+  0%{
+    transform:
+    translateY(-100px)
+    rotate(0deg)
+    translateX(0px);
+  }
+
+  50%{
+    transform:
+    translateY(50vh)
+    rotate(180deg)
+    translateX(30px);
+  }
+
+  100%{
+    transform:
+    translateY(120vh)
+    rotate(360deg)
+    translateX(-30px);
+  }
+}
+  </style>
+</head>
+
+<body>
+    <div class="sakura s1">🌸</div>
+    <div class="sakura s2">🌸</div>
+    <div class="sakura s3">🌸</div>
+    <div class="sakura s4">🌸</div>
+    <div class="sakura s5">🌸</div>
+    <div class="sparkle" style="left:10%; bottom:0;">✦</div>
+  <div class="sparkle" style="left:30%; bottom:-20px; animation-delay:1s;">♡</div>
+  <div class="sparkle" style="left:50%; bottom:-10px; animation-delay:2s;">✦</div>
+  <div class="sparkle" style="left:70%; bottom:-30px; animation-delay:3s;">♡</div>
+  <div class="sparkle" style="left:90%; bottom:-15px; animation-delay:1.5s;">✦</div>
+
+  <div class="container">
+
+    <!-- YAHAN APNI PHOTO FILE KA NAAM DALO -->
+    <img src="your-photo.jpg" class="profile-img">
+
+    <h1>ITOJ ILYA ❤️</h1>
+
+    <!-- Katakana -->
+    <div class="jp">
+      イトージュ・イリヤ ❤️
+    </div>
+
+    <div class="links">
+
+      <a class="link-card" href="https://youtube.com/@cubecode2-o6s?si=o0pyEFyDP59Xppze" target="_blank">
+        <div class="icon">
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+
+        <div class="link-text">
+          <h2>YouTube</h2>
+          <p>@cubecode2-o6s</p>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://www.instagram.com/cubecode2?igsh=MTlxNjRhNGVkeTVpdQ==" target="_blank">
+        <div class="icon">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+
+        <div class="link-text">
+          <h2>Instagram</h2>
+          <p>@cubecode2</p>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://x.com/Cubecode202" target="_blank">
+        <div class="icon">
+          <i class="fa-brands fa-x-twitter"></i>
+        </div>
+
+        <div class="link-text">
+          <h2>X</h2>
+          <p>@Cubecode202</p>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://line.me/ti/p/qF_rjZ2gyg" target="_blank">
+        <div class="icon">
+          <i class="fa-brands fa-line"></i>
+        </div>
+
+        <div class="link-text">
+          <h2>LINE</h2>
+          <p>Chat Link</p>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://open.spotify.com/user/31zutlonwkiep2pphmdrrfl6qvlq?si=PWrB8SNITpiESgqT5Y-SIQ" target="_blank">
+        <div class="icon">
+          <i class="fa-brands fa-spotify"></i>
+        </div>
+
+        <div class="link-text">
+          <h2>Spotify</h2>
+          <p>Music Profile</p>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
