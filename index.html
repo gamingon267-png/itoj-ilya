@@ -96,22 +96,27 @@ background-attachment:fixed;
   filter: drop-shadow(0 0 15px rgba(255,255,255,0.8)) drop-shadow(0 0 25px rgba(255,183,197,1));
 }
 
-.jp{
+ .jp{
   font-size:22px;
   font-weight:800;
   margin-bottom:28px;
   letter-spacing:3px;
+  display: block; /* ye important hai */
   
-  /* Same sakura fill */
   background: url("Sakura-pattern.jpg");
-  background-size: 20%;
+  background-size: 800% auto;
   background-position: center;
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
   
   -webkit-text-stroke: 1.2px #ffffff;
   filter: drop-shadow(0 0 12px rgba(255,255,255,0.7)) drop-shadow(0 0 20px rgba(255,183,197,0.9));
+  
+  /* Ye 2 line glitch fix karti hain */
+  transform: translateZ(0);
+  will-change: transform;
 }
 
     .links{
