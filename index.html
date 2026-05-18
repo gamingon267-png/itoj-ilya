@@ -78,21 +78,40 @@ background-attachment:fixed;
     }
 
     h1{
-  color:#FFB7C5;  /* <-- sakura pink. #FFC0CB bhi try kar sakta hai */
-  font-size:30px;  /* size thoda badha diya */
-  font-weight:800; /* <-- bold kar diya */
-  text-shadow:0 0 15px rgba(255,183,197,0.8), 0 0 25px rgba(255,255,255,0.6); /* glow badhaya */
+  font-size:32px;
+  font-weight:900; 
   margin-bottom:8px;
-  letter-spacing:1px; /* thoda spacing se clean lagega */
+  letter-spacing:2px;
+  
+  /* Sakura fill */
+  background: url("Sakura-pattern.jpg");
+  background-size: 200%; /* image thodi zoom hogi taaki flowers bade dikhen */
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  
+  /* Outline + Glow taaki text gayab na lage */
+  -webkit-text-stroke: 1.5px #ffffff; /* white outline */
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.8)) drop-shadow(0 0 25px rgba(255,183,197,1));
 }
 
-    .jp{
-  color:#FFB7C5;  /* sakura pink - same as h1 */
-  font-size:20px;  /* thoda bada kar diya */
-  font-weight:700; /* bold */
+.jp{
+  font-size:22px;
+  font-weight:800;
   margin-bottom:28px;
-  letter-spacing:3px; /* katakana me spacing achhi lagti hai */
-  text-shadow:0 0 12px rgba(255,183,197,0.8), 0 0 20px rgba(255,255,255,0.6); /* same glow */
+  letter-spacing:3px;
+  
+  /* Same sakura fill */
+  background: url("Sakura-pattern.jpg");
+  background-size: 200%;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  
+  -webkit-text-stroke: 1.2px #ffffff;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.7)) drop-shadow(0 0 20px rgba(255,183,197,0.9));
 }
 
     .links{
