@@ -7,7 +7,6 @@
   <link rel="preload" href="Sakura-pattern.jpg" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
@@ -23,22 +22,15 @@
       display:flex;
       justify-content:center;
       align-items:center;
+      flex-direction:column;
       overflow-y:auto;
-background:url("Your-sakura.jpg");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-background-attachment:fixed;
+      background:url("Your-sakura.jpg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
       position:relative;
-    }
-
-    @keyframes bgMove{
-      from{
-        transform:scale(1);
-      }
-      to{
-        transform:scale(1.08);
-      }
+      padding:40px 0;
     }
 
     .container{
@@ -50,11 +42,10 @@ background-attachment:fixed;
       border-radius:30px;
       backdrop-filter:blur(12px);
       background:rgba(255,255,255,0.15);
-      box-shadow:
-      0 0 25px rgba(255,255,255,0.3),
-      0 0 60px rgba(255,255,255,0.1);
+      box-shadow:0 0 25px rgba(255,255,255,0.3), 0 0 60px rgba(255,255,255,0.1);
       text-align:center;
       border:1px solid rgba(255,255,255,0.25);
+      margin-bottom:20px;
     }
 
     .profile-img{
@@ -69,55 +60,43 @@ background-attachment:fixed;
     }
 
     @keyframes float{
-      0%,100%{
-        transform:translateY(0px);
-      }
-      50%{
-        transform:translateY(-8px);
-      }
+      0%,100%{ transform:translateY(0px); }
+      50%{ transform:translateY(-8px); }
     }
 
     h1{
-  font-size:32px;
-  font-weight:900; 
-  margin-bottom:8px;
-  letter-spacing:2px;
-  
-  /* Sakura fill */
-  background: url("Sakura-pattern.jpg");
-  background-size: 20%; /* image thodi zoom hogi taaki flowers bade dikhen */
-  background-position: center;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  
-  /* Outline + Glow taaki text gayab na lage */
-  -webkit-text-stroke: 1.5px #ffffff; /* white outline */
-  filter: drop-shadow(0 0 15px rgba(255,255,255,0.8)) drop-shadow(0 0 25px rgba(255,183,197,1));
-}
+      font-size:32px;
+      font-weight:900; 
+      margin-bottom:8px;
+      letter-spacing:2px;
+      background: url("Sakura-pattern.jpg");
+      background-size: 20%;
+      background-position: center;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-stroke: 1.5px #ffffff;
+      filter: drop-shadow(0 0 15px rgba(255,255,255,0.8)) drop-shadow(0 0 25px rgba(255,183,197,1));
+    }
 
- .jp{
-  font-size:22px;
-  font-weight:800;
-  margin-bottom:28px;
-  letter-spacing:3px;
-  display: block; /* ye important hai */
-  
-  background: url("Sakura-pattern.jpg");
-  background-size: 20% auto;
-  background-position: center;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  
-  -webkit-text-stroke: 1.2px #ffffff;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.7)) drop-shadow(0 0 20px rgba(255,183,197,0.9));
-  
-  /* Ye 2 line glitch fix karti hain */
-  transform: translateZ(0);
-  will-change: transform;
-}
+    .jp{
+      font-size:22px;
+      font-weight:800;
+      margin-bottom:28px;
+      letter-spacing:3px;
+      display: block;
+      background: url("Sakura-pattern.jpg");
+      background-size: 20% auto;
+      background-position: center;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      -webkit-text-stroke: 1.2px #ffffff;
+      filter: drop-shadow(0 0 12px rgba(255,255,255,0.7)) drop-shadow(0 0 20px rgba(255,183,197,0.9));
+      transform: translateZ(0);
+      will-change: transform;
+    }
 
     .links{
       display:flex;
@@ -157,19 +136,9 @@ background-attachment:fixed;
       box-shadow:0 0 15px rgba(255,255,255,0.2);
     }
 
-    .link-text{
-      text-align:left;
-    }
-
-    .link-text h2{
-      font-size:18px;
-      font-weight:600;
-    }
-
-    .link-text p{
-      font-size:13px;
-      opacity:0.8;
-    }
+    .link-text{ text-align:left; }
+    .link-text h2{ font-size:18px; font-weight:600; }
+    .link-text p{ font-size:13px; opacity:0.8; }
 
     .sparkle{
       position:absolute;
@@ -180,294 +149,202 @@ background-attachment:fixed;
     }
 
     @keyframes spark{
-      0%{
-        transform:translateY(0px) rotate(0deg);
-        opacity:0;
-      }
-      30%{
-        opacity:1;
-      }
-      100%{
-        transform:translateY(-120px) rotate(180deg);
-        opacity:0;
-      }
+      0%{ transform:translateY(0px) rotate(0deg); opacity:0; }
+      30%{ opacity:1; }
+      100%{ transform:translateY(-120px) rotate(180deg); opacity:0; }
     }
-   .sakura{
-  position:absolute;
-  font-size:28px;
-  animation:fall linear infinite;
-  opacity:0.8;
-  filter:drop-shadow(0 0 8px #ff9ac9);
-}
 
-.s1{
-  left:5%;
-  top:-10%;
-  animation-duration:10s;
-}
+    .sakura{
+      position:absolute;
+      font-size:28px;
+      animation:fall linear infinite;
+      opacity:0.8;
+      filter:drop-shadow(0 0 8px #ff9ac9);
+    }
 
-.s2{
-  left:25%;
-  top:-20%;
-  animation-duration:13s;
-}
+    .s1{ left:5%; top:-10%; animation-duration:10s; }
+    .s2{ left:25%; top:-20%; animation-duration:13s; }
+    .s3{ left:50%; top:-15%; animation-duration:9s; }
+    .s4{ left:75%; top:-25%; animation-duration:12s; }
+    .s5{ left:90%; top:-18%; animation-duration:11s; }
 
-.s3{
-  left:50%;
-  top:-15%;
-  animation-duration:9s;
-}
+    @keyframes fall{
+      0%{ transform:translateY(-100px) rotate(0deg) translateX(0px); }
+      50%{ transform:translateY(50vh) rotate(180deg) translateX(30px); }
+      100%{ transform:translateY(120vh) rotate(360deg) translateX(-30px); }
+    }
 
-.s4{
-  left:75%;
-  top:-25%;
-  animation-duration:12s;
-}
+    .fa-youtube{ color:#ff0000; }
+    .fa-instagram{ color:#e1306c; }
+    .fa-x-twitter{ color:#111; }
+    .fa-line{ color:#06c755; }
+    .fa-spotify{ color:#1db954; }
 
-.s5{
-  left:90%;
-  top:-18%;
-  animation-duration:11s;
-}
+    /* LOGIN BOX */
+    #overlay{
+      position:fixed;
+      inset:0;
+      backdrop-filter:blur(8px);
+      background:rgba(0,0,0,0.4);
+      z-index:9998;
+      cursor:pointer;
+    }
 
-@keyframes fall{
-  0%{
-    transform:
-    translateY(-100px)
-    rotate(0deg)
-    translateX(0px);
-  }
+    #loginBox{
+      position:fixed;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:320px;
+      padding:25px;
+      border-radius:25px;
+      background:rgba(255,192,203,0.25);
+      backdrop-filter:blur(15px);
+      border:1px solid rgba(255,255,255,0.4);
+      z-index:9999;
+      text-align:center;
+    }
 
-  50%{
-    transform:
-    translateY(50vh)
-    rotate(180deg)
-    translateX(30px);
-  }
+    #loginBox h2{ color:#ff69b4; margin-bottom:20px; }
+    #loginBox input{
+      width:100%;
+      padding:12px;
+      margin:8px 0;
+      border:none;
+      border-radius:15px;
+      outline:none;
+    }
+    #loginBox button{
+      width:100%;
+      margin-top:10px;
+      padding:12px;
+      border:none;
+      border-radius:15px;
+      cursor:pointer;
+      font-weight:600;
+      background:rgba(255,255,255,0.9);
+      transition:0.2s;
+    }
+    #loginBox button:hover{ transform:scale(1.03); }
 
-  100%{
-    transform:
-    translateY(120vh)
-    rotate(360deg)
-    translateX(-30px);
-  }
-}
-.fa-youtube{
-  color:#ff0000;
-}
+    /* TOP RIGHT BUTTONS */
+    #sakura{
+      position:fixed;
+      top:15px;
+      right:15px;
+      font-size:48px;
+      background:transparent;
+      border:none;
+      outline:none;
+      cursor:pointer;
+      z-index:9999;
+      transition:0.2s;
+    }
 
-.fa-instagram{
-  color:#e1306c;
-}
+    #heart{
+      position:fixed;
+      top:75px;
+      right:18px;
+      font-size:42px;
+      background:transparent;
+      border:none;
+      outline:none;
+      cursor:pointer;
+      z-index:9999;
+      transition:0.2s;
+      display:none;
+    }
 
-.fa-x-twitter{
-  color:#111111;
-}
+    #sakura:hover, #heart:hover{ transform:scale(1.1); }
 
-.fa-line{
-  color:#06c755;
-}
-
-.fa-spotify{
-  color:#1db954;
-}
-#overlay{
-  position:fixed;
-  inset:0;
-  backdrop-filter:blur(8px);
-  background:rgba(0,0,0,0.15);
-  z-index:9998;
-}
-
-#loginBox{
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-
-  width:320px;
-  padding:25px;
-
-  border-radius:25px;
-
-  background:rgba(255,192,203,0.15);
-  backdrop-filter:blur(15px);
-
-  border:1px solid rgba(255,255,255,0.3);
-
-  z-index:9999;
-
-  text-align:center;
-}
-
-#loginBox h2{
-  color:#ff69b4;
-  margin-bottom:20px;
-}
-
-#loginBox input{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-
-  border:none;
-  border-radius:15px;
-}
-
-#loginBox button{
-  width:100%;
-  margin-top:10px;
-  padding:12px;
-
-  border:none;
-  border-radius:15px;
-
-  cursor:pointer;
-}
-#sakura{
-  position:fixed;
-  top:15px;
-  right:15px;
-
-  font-size:48px;
-
-  background:transparent;
-  border:none;
-  outline:none;
-
-  cursor:pointer;
-
-  z-index:9999;
-}
-
-#heart{
-  position:fixed;
-  top:75px;
-  right:18px;
-
-  font-size:42px;
-
-  background:transparent;
-  border:none;
-  outline:none;
-
-  cursor:pointer;
-
-  z-index:9999;
-}
-
-#sakura:hover,
-#heart:hover{
-  transform:scale(1.1);
-}
+    /* GALLERY */
+    #gallery{
+      display:none;
+      width:90%;
+      max-width:600px;
+      padding:20px;
+      border-radius:25px;
+      background:rgba(255,255,255,0.9);
+      backdrop-filter:blur(10px);
+      box-shadow:0 0 30px rgba(255,182,217,0.6);
+      z-index:2;
+    }
+    #gallery h2{ color:#ff69b4; text-align:center; margin-bottom:15px; }
   </style>
 </head>
 
 <body>
-<button id="sakura">🌸</button>  
-<button id="heart" style="display:none;">💛</button>  
+  <!-- TOP RIGHT BUTTONS -->
+  <button id="sakura">🌸</button>  
+  <button id="heart">💛</button>  
 
-<input type="file" id="fileInput" style="display:none;" />  
+  <!-- Hidden file input -->
+  <input type="file" id="fileInput" accept="image/*" style="display:none;" />  
 
-<div id="overlay" style="display:none;"></div>
+  <!-- Login Overlay + Box -->
+  <div id="overlay" style="display:none;"></div>
 
-<div id="loginBox" style="display:none;">
-  <h2>🌸 Sakura Vault</h2>
+  <div id="loginBox" style="display:none;">
+    <h2>🌸 Sakura Vault</h2>
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="login(event)">Login</button>
+    <button onclick="signup(event)">Sign Up</button>
+    <button id="googleLogin" type="button">Continue with Google</button>
+  </div>
 
-  <input id="email" type="email" placeholder="Email">
-
-  <input id="password" type="password" placeholder="Password">
-
-  <button onclick="login()">Login</button>
-
-  <button onclick="signup()">Sign Up</button>
-
-  <button id="googleLogin">
-    Continue with Google
-  </button>
-</div>
-   <div class="sakura s1">🌸</div>
-   <div class="sakura s2">🌸</div>
-   <div class="sakura s3">🌸</div>
-   <div class="sakura s4">🌸</div>
-   <div class="sakura s5">🌸</div>
-   <div class="sparkle" style="left:10%; bottom:0;">✦</div>
+  <!-- Sakura petals animation -->
+  <div class="sakura s1">🌸</div>
+  <div class="sakura s2">🌸</div>
+  <div class="sakura s3">🌸</div>
+  <div class="sakura s4">🌸</div>
+  <div class="sakura s5">🌸</div>
+  <div class="sparkle" style="left:10%; bottom:0;">✦</div>
   <div class="sparkle" style="left:30%; bottom:-20px; animation-delay:1s;">♡</div>
   <div class="sparkle" style="left:50%; bottom:-10px; animation-delay:2s;">✦</div>
   <div class="sparkle" style="left:70%; bottom:-30px; animation-delay:3s;">♡</div>
   <div class="sparkle" style="left:90%; bottom:-15px; animation-delay:1.5s;">✦</div>
 
+  <!-- Main Card -->
   <div class="container">
-
-    <!-- YAHAN APNI PHOTO FILE KA NAAM DALO -->
     <img src="your-photo.jpg" class="profile-img">
-
     <h1>ITOJ ILYA ❤️</h1>
-
-    <!-- Katakana -->
-    <div class="jp">
-      イトージュ・イリヤ ❤️
-    </div>
+    <div class="jp">イトージュ・イリヤ ❤️</div>
 
     <div class="links">
-
       <a class="link-card" href="https://youtube.com/@cubecode2-o6s?si=o0pyEFyDP59Xppze" target="_blank">
-        <div class="icon">
-          <i class="fa-brands fa-youtube"></i>
-        </div>
-
-        <div class="link-text">
-          <h2>YouTube</h2>
-          <p>@cubecode2-o6s</p>
-        </div>
+        <div class="icon"><i class="fa-brands fa-youtube"></i></div>
+        <div class="link-text"><h2>YouTube</h2><p>@cubecode2-o6s</p></div>
       </a>
-
       <a class="link-card" href="https://www.instagram.com/cubecode2?igsh=MTlxNjRhNGVkeTVpdQ==" target="_blank">
-        <div class="icon">
-          <i class="fa-brands fa-instagram"></i>
-        </div>
-
-        <div class="link-text">
-          <h2>Instagram</h2>
-          <p>@cubecode2</p>
-        </div>
+        <div class="icon"><i class="fa-brands fa-instagram"></i></div>
+        <div class="link-text"><h2>Instagram</h2><p>@cubecode2</p></div>
       </a>
-
       <a class="link-card" href="https://x.com/Cubecode202" target="_blank">
-        <div class="icon">
-          <i class="fa-brands fa-x-twitter"></i>
-        </div>
-
-        <div class="link-text">
-          <h2>X</h2>
-          <p>@Cubecode202</p>
-        </div>
+        <div class="icon"><i class="fa-brands fa-x-twitter"></i></div>
+        <div class="link-text"><h2>X</h2><p>@Cubecode202</p></div>
       </a>
-
       <a class="link-card" href="https://line.me/ti/p/qF_rjZ2gyg" target="_blank">
-        <div class="icon">
-          <i class="fa-brands fa-line"></i>
-        </div>
-
-        <div class="link-text">
-          <h2>LINE</h2>
-          <p>Chat Link</p>
-        </div>
+        <div class="icon"><i class="fa-brands fa-line"></i></div>
+        <div class="link-text"><h2>LINE</h2><p>Chat Link</p></div>
       </a>
-
       <a class="link-card" href="https://open.spotify.com/user/31zutlonwkiep2pphmdrrfl6qvlq?si=PWrB8SNITpiESgqT5Y-SIQ" target="_blank">
-        <div class="icon">
-          <i class="fa-brands fa-spotify"></i>
-        </div>
-        <div class="link-text">
-          <h2>Spotify</h2>
-          <p>Music Profile</p>
-        </div>
+        <div class="icon"><i class="fa-brands fa-spotify"></i></div>
+        <div class="link-text"><h2>Spotify</h2><p>Music Profile</p></div>
       </a>
-
     </div>
-
   </div>
-<script type="module" src="./main.js"></script>
+
+  <!-- Gallery Div - Photos yahi dikhengi -->
+  <div id="gallery"></div>
+
+  <script>
+    // Overlay click se login box band
+    document.getElementById("overlay").onclick = () => {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("loginBox").style.display = "none";
+    }
+  </script>
+  <script type="module" src="./main.js"></script>
 </body>
 </html>
