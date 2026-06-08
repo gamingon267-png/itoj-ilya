@@ -120,6 +120,12 @@ function openLoginBox() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("loginBox").style.display = "block";
 }
+const provider = new GoogleAuthProvider();
+
+document.getElementById("googleLogin").onclick = async () => {
+  await signInWithPopup(auth, provider);
+  location.reload();
+};
 
 function closeLoginBox() {
   let box = document.getElementById("loginBox");
