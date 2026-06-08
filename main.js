@@ -59,7 +59,8 @@ window.login = async function () {
   let pass = document.getElementById("password").value;
 
   await signInWithEmailAndPassword(auth, email, pass);
-  closeLoginBox();
+closeLoginBox();
+location.reload();
 };
 
 /* 🆕 SIGNUP FUNCTION */
