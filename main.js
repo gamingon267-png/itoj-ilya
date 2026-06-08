@@ -1,11 +1,9 @@
-import { auth, db, storage } from "./firebase.js";
+import { auth, db, storage, provider } from "./firebase.js";
 
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  signOut,
-  GoogleAuthProvider,
   signInWithPopup
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
@@ -20,12 +18,26 @@ import {
   addDoc,
   query,
   where,
-  getDocs
+  getDocs,
+  orderBy,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 let user = null;
 
-/* 🌸 SAKURA CLICK */
+/* 🔐 LOGIN STATE - Page load pe check karega */
+onAuthStateChanged(auth, (u) => {
+  user = u;
+  if (user) {
+    document.getElementById("heart").style.display = "block";
+    closeLoginBox();
+  } else {
+    document.getElementById("heart").style.display = "none";
+    document.getElementById("gallery").style.display = "none";
+  }
+});
+
+/* 🌸 SAKURA CLICK = Login nahi hai to login box, hai to upload */
 document.getElementById("sakura").onclick = () => {
   if (!user) {
     openLoginBox();
@@ -34,99 +46,117 @@ document.getElementById("sakura").onclick = () => {
   }
 };
 
-/* 💛 HEART CLICK */
-document.getElementById("heart").onclick = () => {
-  openGallery();
+/* 💛 HEART CLICK = Gallery kholega */
+document.getElementById("heart").onclick = async () => {
+  if (!user) return;
+  await openGallery();
 };
 
-/* 🔐 LOGIN STATE */
-onAuthStateChanged(auth, (u) => {
-  user = u;
-
-  if (user) {
-    document.getElementById("heart").style.display = "block";
-  } else {
-    document.getElementById("heart").style.display = "none";
-  }
-});
-
 /* 🔐 LOGIN FUNCTION */
-window.login = async function () {
-  let email = document.getElementById("email").value;
+window.login = async function (e) {
+  e.preventDefault();
+  let email = document.getElementById("email").value.trim();
   let pass = document.getElementById("password").value;
-
-  await signInWithEmailAndPassword(auth, email, pass);
-closeLoginBox();
-location.reload();
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+  } catch(err) {
+    alert("Login Error: " + err.message);
+  }
 };
 
 /* 🆕 SIGNUP FUNCTION */
-window.signup = async function () {
-  let email = document.getElementById("email").value;
+window.signup = async function (e) {
+  e.preventDefault();
+  let email = document.getElementById("email").value.trim();
   let pass = document.getElementById("password").value;
+  try {
+    await createUserWithEmailAndPassword(auth, email, pass);
+  } catch(err) {
+    alert("Signup Error: " + err.message);
+  }
+};
 
-  await createUserWithEmailAndPassword(auth, email, pass);
-closeLoginBox();
-location.reload();
+/* GOOGLE LOGIN - location.reload hata diya */
+document.getElementById("googleLogin").onclick = async (e) => {
+  e.preventDefault();
+  try {
+    await signInWithPopup(auth, provider);
+  } catch(err) {
+    alert("Google Error: " + err.message);
+  }
 };
 
 /* 📤 UPLOAD PHOTO */
 document.getElementById("fileInput").onchange = async (e) => {
   let file = e.target.files[0];
+  if (!file ||!user) return;
 
-  if (!file || !user) return;
+  let storageRef = ref(storage, `users/${user.uid}/${Date.now()}_${file.name}`);
 
-  let storageRef = ref(storage, `${user.uid}/${file.name}`);
+  try {
+    await uploadBytes(storageRef, file);
+    let url = await getDownloadURL(storageRef);
 
-  await uploadBytes(storageRef, file);
+    await addDoc(collection(db, "photos"), {
+      userId: user.uid,
+      url: url,
+      name: file.name,
+      createdAt: serverTimestamp()
+    });
 
-  let url = await getDownloadURL(storageRef);
-
-  await addDoc(collection(db, "photos"), {
-    userId: user.uid,
-    url: url,
-    name: file.name,
-    createdAt: Date.now()
-  });
-
-  alert("Photo uploaded 🌸");
-
-  document.getElementById("heart").style.display = "block";
+    alert("Photo uploaded 🌸");
+    e.target.value = ""; // input reset kar de
+  } catch(err) {
+    alert("Upload Error: " + err.message);
+  }
 };
 
-/* 💛 OPEN GALLERY */
+/* 💛 OPEN GALLERY - Same page me dikhegi */
 async function openGallery() {
-  let q = query(
-    collection(db, "photos"),
-    where("userId", "==", user.uid)
-  );
+  if (!user) return;
 
-  let snapshot = await getDocs(q);
+  let galleryDiv = document.getElementById("gallery");
+  galleryDiv.innerHTML = "<h2>Your Photos 💛</h2><p>Loading...</p>";
+  galleryDiv.style.display = "block";
 
-  let win = window.open();
-  win.document.write("<h2>Your Photos 💛</h2>");
+  try {
+    let q = query(
+      collection(db, "photos"),
+      where("userId", "==", user.uid),
+      orderBy("createdAt", "desc")
+    );
+    let snapshot = await getDocs(q);
 
-  snapshot.forEach(doc => {
-    let data = doc.data();
-    win.document.write(`
-      <img src="${data.url}" style="width:150px;margin:10px;border-radius:10px;">
-    `);
-  });
+    if (snapshot.empty) {
+      galleryDiv.innerHTML = "<h2>Your Photos 💛</h2><p>No photos yet. Upload from 🌸</p>";
+      return;
+    }
+
+    let html = "<h2>Your Photos 💛</h2><div style='display:flex;flex-wrap:wrap;gap:10px;'>";
+    snapshot.forEach(doc => {
+      let data = doc.data();
+      html += `<img src="${data.url}" style="width:150px;height:150px;object-fit:cover;border-radius:10px;border:2px solid #fff;">`;
+    });
+    html += "</div>";
+    galleryDiv.innerHTML = html;
+  } catch(err) {
+    galleryDiv.innerHTML = "<h2>Your Photos 💛</h2><p>Error loading photos</p>";
+    console.error(err);
+  }
 }
 
-/* 🔐 LOGIN BOX (SIMPLE UI) */
+/* 🔐 LOGIN BOX */
 function openLoginBox() {
   document.getElementById("overlay").style.display = "block";
   document.getElementById("loginBox").style.display = "block";
 }
-const provider = new GoogleAuthProvider();
-
-document.getElementById("googleLogin").onclick = async () => {
-  await signInWithPopup(auth, provider);
-  location.reload();
-};
 
 function closeLoginBox() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("loginBox").style.display = "none";
 }
+
+/* ESC dabane se login box band */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeLoginBox();
+});
