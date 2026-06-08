@@ -117,8 +117,8 @@ async function openGallery() {
 
 /* 🔐 LOGIN BOX (SIMPLE UI) */
 function openLoginBox() {
-  let box = document.getElementById("loginBox");
-  if (box) box.style.display = "block";
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("loginBox").style.display = "block";
 }
 
 function closeLoginBox() {
