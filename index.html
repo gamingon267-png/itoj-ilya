@@ -316,7 +316,23 @@ background-attachment:fixed;
 
 <input type="file" id="fileInput" style="display:none;" />  
 
-<div id="loginBox" style="display:none;">  
+<div id="overlay" style="display:none;"></div>
+
+<div id="loginBox" style="display:none;">
+  <h2>🌸 Sakura Vault</h2>
+
+  <input id="email" type="email" placeholder="Email">
+
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <button onclick="signup()">Sign Up</button>
+
+  <button id="googleLogin">
+    Continue with Google
+  </button>
+</div>
   <input id="email" placeholder="email" />  
   <input id="password" type="password" placeholder="password" />  
 
