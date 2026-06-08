@@ -127,6 +127,6 @@ document.getElementById("googleLogin").onclick = async () => {
 };
 
 function closeLoginBox() {
-  let box = document.getElementById("loginBox");
-  if (box) box.style.display = "none";
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("loginBox").style.display = "none";
 }
