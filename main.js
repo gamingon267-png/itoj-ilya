@@ -69,7 +69,8 @@ window.signup = async function () {
   let pass = document.getElementById("password").value;
 
   await createUserWithEmailAndPassword(auth, email, pass);
-  closeLoginBox();
+closeLoginBox();
+location.reload();
 };
 
 /* 📤 UPLOAD PHOTO */
