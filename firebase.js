@@ -5,11 +5,13 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebas
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_ID",
-  storageBucket: "YOUR_BUCKET",
-  appId: "YOUR_APP"
+  apiKey: "AIzaSyCuHiIQSTr_7S9CjwVUxJimSuxPbOLyfbk",
+  authDomain: "itoj-91bcc.firebaseapp.com",
+  projectId: "itoj-91bcc",
+  storageBucket: "itoj-91bcc.firebasestorage.app",
+  messagingSenderId: "917771517858",
+  appId: "1:917771517858:web:0b91aa0a58a1ada4a3fcfb",
+  measurementId: "G-DZ23TER76P"
 };
 
 export const app = initializeApp(firebaseConfig);
