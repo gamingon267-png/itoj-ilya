@@ -1,4 +1,4 @@
-import { auth, db, storage, provider } from "./firebase.js";
+import { auth, db, provider } from "./firebase.js";
 
 import {
   signInWithEmailAndPassword,
@@ -6,12 +6,6 @@ import {
   onAuthStateChanged,
   signInWithPopup
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 
 import {
   collection,
@@ -24,6 +18,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 let user = null;
+
+// 🔑 Teri ImgBB API key
+const IMGBB_KEY = "95e68af14309396d5e9c4755eb4b789b";
 
 /* 🔐 LOGIN STATE - Page load pe check karega */
 onAuthStateChanged(auth, (u) => {
@@ -86,16 +83,24 @@ document.getElementById("googleLogin").onclick = async (e) => {
   }
 };
 
-/* 📤 UPLOAD PHOTO */
+/* 📤 UPLOAD PHOTO - ImgBB se */
 document.getElementById("fileInput").onchange = async (e) => {
   let file = e.target.files[0];
   if (!file ||!user) return;
 
-  let storageRef = ref(storage, `users/${user.uid}/${Date.now()}_${file.name}`);
+  let formData = new FormData();
+  formData.append("image", file);
 
   try {
-    await uploadBytes(storageRef, file);
-    let url = await getDownloadURL(storageRef);
+    await alert("Uploading... ruk ja 🌸");
+
+    let res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_KEY}`, {
+      method: "POST",
+      body: formData
+    });
+
+    let data = await res.json();
+    let url = data.data.url;
 
     await addDoc(collection(db, "photos"), {
       userId: user.uid,
